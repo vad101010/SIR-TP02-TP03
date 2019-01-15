@@ -1,13 +1,68 @@
 package metier;
 
-public class Date {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-	private int day;
+@Entity
+public class Date
+{
 
-	private int month;
+    private long id;
+    private int day;
+    private int month;
+    private int year;
+    private boolean pause;
 
-	private int year;
+    @Id
+    @GeneratedValue
+    public long getId()
+    {
+        return id;
+    }
 
-	private boolean pause;
+    public void setId(long id)
+    {
+        this.id = id;
+    }
 
+    public int getDay()
+    {
+        return day;
+    }
+
+    public void setDay(int day)
+    {
+        this.day = day;
+    }
+
+    public int getMonth()
+    {
+        return month;
+    }
+
+    public void setMonth(int month)
+    {
+        this.month = month;
+    }
+
+    public int getYear()
+    {
+        return year;
+    }
+
+    public void setYear(int year)
+    {
+        this.year = year;
+    }
+
+    public boolean isPause()
+    {
+        return pause;
+    }
+
+    public void setPause(boolean pause)
+    {
+        this.pause = pause;
+    }
 }
