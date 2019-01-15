@@ -1,33 +1,42 @@
 package jpa;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-import javax.persistence.PersistenceContext;
+import metier.*;
+
+import javax.persistence.*;
+import java.util.List;
 
 public class JpaTest {
 
+	private EntityManager manager;
+
+	public JpaTest(EntityManager manager) {
+		this.manager = manager;
+	}
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		EntityManagerFactory factory =
+				Persistence.createEntityManagerFactory("example");
+		EntityManager manager = factory.createEntityManager();
+		JpaTest test = new JpaTest(manager);
 
-		EntityManager manager = EntityManagerHelper.getEntityManager();
 		EntityTransaction tx = manager.getTransaction();
 		tx.begin();
-
-
 		try {
-
+//			test.createEmployees();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		tx.commit();
 
+//		test.listEmployees();
 
 		manager.close();
-		EntityManagerHelper.closeEntityManagerFactory();
-		//		factory.close();
+		System.out.println(".. done");
 	}
+
+
 
 
 }
