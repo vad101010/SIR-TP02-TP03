@@ -11,6 +11,6 @@ public class User {
 
 	private String mail;
 
-	private List<Meeting> meetings = new ArrayList<Meeting>();
+	private List<Meeting> meetings = new ArrayList<>();
 
 }
