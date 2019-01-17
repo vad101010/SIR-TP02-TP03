@@ -16,27 +16,37 @@ public class JpaTest {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		EntityManagerFactory factory =
-				Persistence.createEntityManagerFactory("example");
+		EntityManager manager = EntityManagerHelper.getEntityManager();
+		EntityTransaction tx = manager.getTransaction();
+		tx.begin();
+
+		/*EntityManagerFactory factory =
+				Persistence.createEntityManagerFactory("dev");
 		EntityManager manager = factory.createEntityManager();
 		JpaTest test = new JpaTest(manager);
 
 		EntityTransaction tx = manager.getTransaction();
-		tx.begin();
+		tx.begin();*/
 		try {
-//			test.createEmployees();
+//			test.createUsers();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		tx.commit();
 
-//		test.listEmployees();
-
 		manager.close();
 		System.out.println(".. done");
 	}
 
-
+	private void createUsers() {
+		int numOfUsers = manager.createQuery("SELECT u FROM User u", User.class).getResultList().size();
+		if (numOfUsers == 0) {
+			manager.persist(new User("Dupont", "Corentin", "cdupont@test.fr"));
+			manager.persist(new User("Dupond", "Lucien", "cdupont@test.fr"));
+			manager.persist(new User("Dupomp", "Mick", "cdupont@test.fr"));
+			manager.persist(new User("Dupon", "Arthur", "cdupont@test.fr"));
+		}
+	}
 
 
 }

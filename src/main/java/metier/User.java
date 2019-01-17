@@ -13,6 +13,15 @@ public class User {
 	private String mail;
 	private List<Meeting> meetings = new ArrayList<>();
 
+	public User() {
+	}
+
+	public User(String name, String firstName, String mail) {
+		this.name = name;
+		this.firstName = firstName;
+		this.mail = mail;
+	}
+
 	@Id
 	@GeneratedValue
 	public Long getId()
