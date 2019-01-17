@@ -12,6 +12,8 @@ public class Meeting
     private String summary;
     private String accessCode;
     private Date date;
+    private Location location;
+
     private List<User> attendees;
 
     @Id
@@ -76,5 +78,16 @@ public class Meeting
     public void setAttendees(List<User> attendees)
     {
         this.attendees = attendees;
+    }
+
+    public void setLocation(Location location)
+    {
+        this.location = location;
+    }
+
+    @OneToOne
+    public Location getLocation()
+    {
+        return location;
     }
 }

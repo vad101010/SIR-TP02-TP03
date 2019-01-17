@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Date
+public class Date extends ChoiceType
 {
 
     private long id;

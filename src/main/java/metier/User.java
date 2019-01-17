@@ -64,7 +64,7 @@ public class User {
 		this.mail = mail;
 	}
 
-	@ManyToMany(mappedBy = "attendees", cascade = CascadeType.PERSIST)
+	@ManyToMany(cascade = CascadeType.PERSIST)
 	public List<Meeting> getMeetings()
 	{
 		return meetings;

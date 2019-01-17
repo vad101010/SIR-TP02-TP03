@@ -8,7 +8,7 @@ public class Survey {
 
     private long id;
     private Meeting meeting;
-    private List<Date> availableDates;
+    private List<ChoiceType> availableChoices;
 
     @Id
     @GeneratedValue
@@ -34,13 +34,13 @@ public class Survey {
     }
 
     @OneToMany
-    public List<Date> getAvailableDates()
+    public List<ChoiceType> getAvailableChoices()
     {
-        return availableDates;
+        return availableChoices;
     }
 
-    public void setAvailableDates(List<Date> availableDates)
+    public void setAvailableChoices(List<ChoiceType> availableChoices)
     {
-        this.availableDates = availableDates;
+        this.availableChoices = availableChoices;
     }
 }
