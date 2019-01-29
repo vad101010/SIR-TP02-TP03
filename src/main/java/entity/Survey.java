@@ -1,4 +1,4 @@
-package metier;
+package entity;
 
 import javax.persistence.*;
 import java.util.List;
@@ -8,7 +8,7 @@ public class Survey {
 
     private long id;
     private Meeting meeting;
-    private List<ChoiceType> availableChoices;
+    private List<Date> availableChoices;
 
     @Id
     @GeneratedValue
@@ -34,12 +34,12 @@ public class Survey {
     }
 
     @OneToMany
-    public List<ChoiceType> getAvailableChoices()
+    public List<Date> getAvailableChoices()
     {
         return availableChoices;
     }
 
-    public void setAvailableChoices(List<ChoiceType> availableChoices)
+    public void setAvailableChoices(List<Date> availableChoices)
     {
         this.availableChoices = availableChoices;
     }

@@ -1,6 +1,6 @@
 package jpa;
 
-import metier.*;
+import entity.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -20,9 +20,6 @@ public class JpaTest
      */
     public static void main(String[] args)
     {
-//		EntityManager manager = EntityManagerHelper.getEntityManager();
-//		EntityTransaction tx = manager.getTransaction();
-//		tx.begin();
 
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("mysql");
         EntityManager manager = factory.createEntityManager();
@@ -32,7 +29,7 @@ public class JpaTest
         tx.begin();
         try
         {
-            test.createUsers();
+            test.createUser();
         }
         catch (Exception e)
         {
@@ -45,7 +42,7 @@ public class JpaTest
         System.out.println(".. done");
     }
 
-    private void createUsers()
+    private void createUser()
     {
         int numOfUsers = manager.createQuery("SELECT u FROM User u", User.class).getResultList().size();
         if (numOfUsers == 0)
@@ -55,6 +52,12 @@ public class JpaTest
             manager.persist(new User("Dupomp", "Mick", "cdupont@test.fr"));
             manager.persist(new User("Dupon", "Arthur", "cdupont@test.fr"));
         }
+
+    }
+
+    public void createUser(String name, String firstname, String email)
+    {
+        manager.persist(new User(name, firstname, email));
     }
 
     private List<User> getUser(String name)
@@ -63,5 +66,10 @@ public class JpaTest
         return manager.createQuery(query, User.class).setParameter("name", name).getResultList();
     }
 
+    public List<User> getUser()
+    {
+        String query = "SELECT u FROM User u";
+        return manager.createQuery(query, User.class).getResultList();
+    }
 
 }
